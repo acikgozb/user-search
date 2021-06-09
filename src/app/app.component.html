@@ -1,1 +1,4 @@
 <input [formControl]="userInput" />
+<div *ngIf="loading$ | async">Loading...</div>
+<button (click)="loadingService.showLoader()">Show Loader</button>
+<button (click)="loadingService.hideLoader()">Hide Loader</button>

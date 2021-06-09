@@ -1,4 +1,5 @@
-import {UserService} from "./services/user.service";
+import {LoadingService} from "./services/loading/loading.service";
+import {UserService} from "./services/user/user.service";
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {filter, switchMap, tap} from "rxjs/operators";
@@ -11,8 +12,12 @@ import {filter, switchMap, tap} from "rxjs/operators";
 })
 export class AppComponent implements OnInit {
   userInput = new FormControl("");
+  loading$ = this.loadingService.loading$;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    public loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
     this.userInput.valueChanges
